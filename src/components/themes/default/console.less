@@ -1,0 +1,43 @@
+@menu-text-color:#fff;
+.@{menu-prefix-cls} {
+
+	.@{menu-prefix-cls}-submenu-title, .@{menu-prefix-cls}-item {
+		.anticon {
+			color: @menu-text-color;
+		}
+	}
+
+	&-horizontal {
+		background-color: @primary-color;
+		& > .@{menu-prefix-cls}-item,
+		& > .@{menu-prefix-cls}-submenu {
+
+			> a {
+				color: @menu-text-color;
+				&:hover {
+					color: @primary-color;
+				}
+
+			}
+		}
+
+		& > .@{menu-prefix-cls}-submenu, & > .@{menu-prefix-cls}-item {
+
+			border-bottom: 2px solid transparent;
+			margin-right: 24px;
+
+			&-active,
+			&-selected {
+				border-bottom: 2px solid @primary-color;
+				color: @primary-color;
+				> a{
+					color: @primary-color
+				}
+				.anticon {
+					color: @primary-color;
+				}
+			}
+		}
+
+}
+}
