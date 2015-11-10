@@ -18,25 +18,25 @@ class GlobalNav extends React.Component {
 
 				let links = [
 					{
-					path:'/',
+					path:'/products',
 					icon:'home',
-					title:'Home'
+					title:'商品管理'
 				},	{
 					path:'/calendar',
 					icon:'calendar',
-					title:'Calendar'
+					title:'订单管理'
 				},	{
 					path:'/grades',
 					icon:'',
-					title:'Grades'
+					title:'促销活动'
 				},	{
 					path:'/messages',
 					icon:'messages',
-					title:'Messages'
+					title:'会员管理'
 				},	{
 					path:'/profile',
 					icon:'profile',
-					title:'Profile'
+					title:'系统设置'
 				}
 			]
 		return <Menu mode="horizontal">
