@@ -2,7 +2,7 @@ import request from './Resource';
 
 
 export function loggedIn() {
-	return true
+	return false
 }
 
 export function login(data) {

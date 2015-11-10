@@ -2,11 +2,17 @@ import React from 'react'
 
 class Grades extends React.Component {
 
+
+	compoentDidMount(){
+
+	}
+
   render() {
     return (
-      <div>
+      <Table>
         <h2>Grades</h2>
-      </div>
+				<Button></Button>
+      </Table>
     )
   }
 

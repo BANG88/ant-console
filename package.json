@@ -8,7 +8,7 @@
     "start": "node scripts/serve.js",
     "clean": "node scripts/clean.js",
     "asset": "node scripts/asset.js",
-    "build": "npm run clean; npm run asset; node scripts/build.js"
+    "build": "npm run clean; npm run asset;NODE_ENV=production node scripts/build.js"
   },
   "src": "src",
   "dependencies": {
@@ -49,6 +49,7 @@
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "redbox-react": "^1.1.1",
+    "stats-webpack-plugin": "^0.2.2",
     "style-loader": "~0.12.4",
     "url-loader": "~0.5.6",
     "webpack": "~1.12.2",
