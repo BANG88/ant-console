@@ -24,6 +24,49 @@
 - class
 - import
 - function
+- => 箭头函数
+- 解构赋值 {x,y} = {x,y,z}
+- let
+- const
+-
+```js
+
+class 模块名字 extends React.Component {
+
+  constructor(props){
+
+    super(props);
+
+		// 设置状态值
+    this.state = {
+      count:0
+    }
+
+    // You can subscribe to the updates manually, or use bindings to your view layer.
+
+  }
+
+  componentDidMount(){
+
+    //  ajax
+    //  
+
+  }
+
+  render() {
+    return (
+      <div>
+        //  模板
+      </div>
+    )
+  }
+
+
+
+}
+
+export default 模块名字
+```
 
 ## react
 
@@ -51,7 +94,7 @@
 
 ## 学习大纲
 
-- react 语法
-- react 事件
-- es6 (基本语法)
+- react 语法 d1
+- react 事件 d1
+- es6 (基本语法) d1
 - 路由
