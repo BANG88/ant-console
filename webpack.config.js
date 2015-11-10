@@ -18,9 +18,7 @@ const resolve = {
       'images': __dirname + '/src/public/images'
     }
   },
-  externals: {
-    jquery: 'window.jQuery'
-  },
+   
 };
 
 const lintLoaders  = {

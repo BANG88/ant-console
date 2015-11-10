@@ -4,15 +4,7 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createHistory, useBasename } from 'history'
 import { Router } from 'react-router'
-import { Provider } from 'react-redux'
-import { ReduxRouter } from 'redux-router'
-import thunk from 'redux-thunk'
-import { createStore, applyMiddleware } from 'redux'
-import reducer from './reducers'
-
-const middleware = [thunk];
-const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore)
-const store = createStoreWithMiddleware(reducer)
+import {redirectToLogin} from './actions/auth'
 
 const history = useBasename(createHistory)({
   // basename: '/console'
@@ -26,9 +18,7 @@ const rootRoute = {
    * @param  {[type]} replaceState [description]
    * @return {[type]}              [description]
    */
-  onEnter:function (nextState, replaceState) {
-    console.log(nextState);
-  },
+  onEnter: redirectToLogin,
   childRoutes: [ {
     path: '/',
     component: require('./components/App'),
@@ -38,13 +28,13 @@ const rootRoute = {
       require('./routes/Course'),
       require('./routes/Grades'),
       require('./routes/Messages'),
-      require('./routes/Profile')
+      require('./routes/Profile'),
+			require('./routes/Member')
+
     ]
   } ]
 }
 
-render( <Provider store={store}>
-    <Router history={history} routes={rootRoute} />
-      </Provider>,
+render(<Router history={history} routes={rootRoute} />,
   document.getElementById('root')
 )
