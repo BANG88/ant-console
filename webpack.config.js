@@ -124,7 +124,7 @@ const development = {
 	},
 	cache: true,
 	debug: true,
-	devtool: 'eval',
+	devtool: 'eval-source-map',
 	entry: [
 		'webpack-hot-middleware/client',
 		'./src/index.js'

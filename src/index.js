@@ -3,7 +3,7 @@ import 'babel-core/polyfill';
 import React from 'react'
 import { render } from 'react-dom'
 import { createHistory, useBasename } from 'history'
-import { Router } from 'react-router'
+import { Router ,Route} from 'react-router'
 import {redirectToLogin} from './actions/auth'
 
 const history = useBasename(createHistory)({
@@ -18,7 +18,7 @@ const rootRoute = {
    * @param  {[type]} replaceState [description]
    * @return {[type]}              [description]
    */
-  onEnter: redirectToLogin,
+	// indexRoute:require('./components/App'),
   childRoutes: [ {
     path: '/',
     component: require('./components/App'),
@@ -30,11 +30,27 @@ const rootRoute = {
       require('./routes/Messages'),
       require('./routes/Profile'),
 			require('./routes/Member')
-
     ]
   } ]
 }
 
-render(<Router history={history} routes={rootRoute} />,
+render(
+	<Router history={history} routes={rootRoute} />,
   document.getElementById('root')
 )
+
+
+//
+// render(
+// 	<Router history={history}>
+// <Route path="/" component={require('./components/App')}>
+// <Route path=""></Route>
+// <Route path=""></Route>
+// <Route path=""></Route>
+// <Route path="login" component={require('./components/Login')}></Route>
+// <Route path="*" component={require('./components/NotFound')}></Route>
+// </Route>
+//
+// 	</Router>,
+//   document.getElementById('root')
+// )
