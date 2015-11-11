@@ -28,7 +28,6 @@
 - 解构赋值 {x,y} = {x,y,z}
 - let
 - const
--
 ```js
 
 class 模块名字 extends React.Component {
