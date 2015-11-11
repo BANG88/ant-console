@@ -7,7 +7,7 @@
 - windows 下面安装
 - * 安装编译依赖文件 `Python` `vc++`(建议安装 visual studio)
 - * win10的同学可以按照这个来安装https://github.com/nodejs/node-gyp/issues/629#issuecomment-153196245
-
+- run `npm start`
 
 ## 链接
 
