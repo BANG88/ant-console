@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 import 'babel-core/polyfill';
 import React from 'react'
 import { render } from 'react-dom'
 import { createHistory, useBasename } from 'history'
 import { Router ,Route} from 'react-router'
-import {redirectToLogin} from './actions/auth'
+import {redirectToLogin,loggedIn} from './actions/auth'
 
 const history = useBasename(createHistory)({
   // basename: '/console'
@@ -12,16 +11,17 @@ const history = useBasename(createHistory)({
 
 const rootRoute = {
   component: 'div',
-  /**
-   * 授权相关
-   * @param  {[type]} nextState    [description]
-   * @param  {[type]} replaceState [description]
-   * @return {[type]}              [description]
-   */
-	// indexRoute:require('./components/App'),
+
   childRoutes: [ {
     path: '/',
-    component: require('./components/App'),
+    /**
+     * 授权相关
+     * @param  {[type]} nextState    [description]
+     * @param  {[type]} replaceState [description]
+     * @return {[type]}              [description]
+     */
+    onEnter:redirectToLogin,
+    component:require('./components/App'),
     childRoutes: [
       require('./routes/Products'),
       require('./routes/Calendar'),
@@ -29,28 +29,22 @@ const rootRoute = {
       require('./routes/Grades'),
       require('./routes/Messages'),
       require('./routes/Profile'),
-			require('./routes/Member')
     ]
-  } ]
+  },
+  // 登录
+  {
+    path:'/login',
+    component: require('./routes/Member/components/Login')
+  },
+  // 404
+  {
+    path:'*',
+    component:require('./components/NotFound')
+  }]
+
 }
 
 render(
 	<Router history={history} routes={rootRoute} />,
   document.getElementById('root')
 )
-
-
-//
-// render(
-// 	<Router history={history}>
-// <Route path="/" component={require('./components/App')}>
-// <Route path=""></Route>
-// <Route path=""></Route>
-// <Route path=""></Route>
-// <Route path="login" component={require('./components/Login')}></Route>
-// <Route path="*" component={require('./components/NotFound')}></Route>
-// </Route>
-//
-// 	</Router>,
-//   document.getElementById('root')
-// )

@@ -1,8 +1,9 @@
 import request from './Resource';
+import cookie from 'js-cookie';
 
 
 export function loggedIn() {
-	return false
+	return cookie.getJSON('token')
 }
 
 export function login(data) {

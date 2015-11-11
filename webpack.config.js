@@ -15,7 +15,7 @@ const resolve = {
 			'components': __dirname + '/src/components/',
 			'constants': __dirname + '/src/constants/',
 			'reducers': __dirname + '/src/reducers/',
-			'styles': __dirname + '/src/styles',
+			'themes': __dirname + '/src/public/themes',
 			'images': __dirname + '/src/public/images'
 		}
 	},
@@ -60,8 +60,8 @@ const loaders = [{
 
 const plugins = {
 	development: [
-		new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
 		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.DefinePlugin({
 			__DEVELOPMENT__: true,
@@ -89,7 +89,7 @@ const plugins = {
 			__DEVELOPMENT__: false,
 			__DEVTOOLS__: false
 		}),
-		new ExtractTextPlugin('[name]-[hash].css', {
+		new ExtractTextPlugin('[name]-[contenthash].css', {
 			disable: false,
 			allChunks: true
 		}),
@@ -116,7 +116,7 @@ const development = {
 	},
 	cache: true,
 	debug: true,
-	devtool: 'eval-source-map',
+	devtool: "#inline-source-map",
 	entry: [
 		'webpack-hot-middleware/client',
 		'./src/index.js'
