@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
-import {Menu,Icon} from 'antd';
+import {Menu,Icon,Button} from 'antd';
+import cookie from 'js-cookie';
 
 const LinkProps = {
 
@@ -39,7 +40,7 @@ class GlobalNav extends React.Component {
 					title:'系统设置'
 				}
 			]
-		return <Menu mode="horizontal">
+		return <div><Menu mode="horizontal">
 		{
 			links.map(function (link) {
 				return <Menu.Item key={link.title}>
@@ -48,6 +49,10 @@ class GlobalNav extends React.Component {
 			})
 		}
 		</Menu>
+		<Button onClick={()=>{
+cookie.remove('token');
+		}}>退出登录</Button>
+		</div>
 	}
 }
 

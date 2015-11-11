@@ -2,7 +2,6 @@ import React from 'react';
 import {Validation, Button, Form, Input,message} from 'antd';
 import cookie from 'js-cookie';
 
-
 const Validator = Validation.Validator;
 const FormItem = Form.Item;
 
