@@ -1,12 +1,8 @@
 import webpack from 'webpack';
-import cssnext from 'cssnext';
-import precss from 'precss';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 import path from 'path';
-
-var StatsPlugin = require('stats-webpack-plugin');
 
 
 const assetPath = path.join(__dirname, 'dist');
@@ -78,10 +74,6 @@ const plugins = {
 		new HtmlWebpackPlugin({
 			template: 'src/index.html.tpl',
 			inject: 'body'
-		}),
-		new StatsPlugin('stats.json', {
-			chunkModules: true,
-			exclude: [/node_modules[\\\/]react/]
 		})
 	],
 
@@ -158,16 +150,7 @@ const development = {
 		]
 	},
 
-	plugins: plugins.development,
-
-	postcss: function() {
-		return [
-			cssnext({
-				autoprefixer: ['last 2 version']
-			}),
-			precss
-		]
-	}
+	plugins: plugins.development
 };
 
 const production = {
@@ -193,16 +176,7 @@ const production = {
 		]
 	},
 
-	plugins: plugins.production,
-
-	postcss: function() {
-		return [
-			cssnext({
-				autoprefixer: ['last 2 version']
-			}),
-			precss
-		]
-	}
+	plugins: plugins.production
 };
 
 

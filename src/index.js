@@ -17,8 +17,7 @@ const rootRoute = {
    * @param  {[type]} nextState    [description]
    * @param  {[type]} replaceState [description]
    * @return {[type]}              [description]
-   */
-  onEnter: redirectToLogin,
+   */  
   childRoutes: [ {
     path: '/',
     component: require('./components/App'),

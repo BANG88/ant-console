@@ -31,7 +31,7 @@ app.use(require('webpack-hot-middleware')(compiler));
 app.use('/api', require('proxy-middleware')(url.parse('http://172.16.30.125:8080/zeus/')));
 
 
-app.listen(3000, 'localhost', (err) => {
+app.listen(3000, 'localhost',function (err) {
   if (err) {
     console.log(err);
     return;
