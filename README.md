@@ -1,6 +1,13 @@
 # ant-console
 > 后台基础模板( ant + react + react router + es6 + webpack)
 
+## 安装
+
+- clone 项目后使用 `npm install` 安装依赖( node 0.12.7以上)
+- windows 下面安装
+- * 安装编译依赖文件 `Python` `vc++`(建议安装 visual studio)
+- * win10的同学可以按照这个来安装https://github.com/nodejs/node-gyp/issues/629#issuecomment-153196245
+
 
 ## 链接
 
