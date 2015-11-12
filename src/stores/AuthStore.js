@@ -1,6 +1,6 @@
 import ActionType from '../constants/AuthConstants'
-import {Dispatcher,EventEmitter} from '../utils'
-
+import {EventEmitter} from '../utils'
+import Dispatcher from '../dispatcher'
 
 let AuthStore = Object.assign({},EventEmitter.prototype,{
 
@@ -14,7 +14,7 @@ AuthStore.dispatchToken = Dispatcher.register((action)=>{
 		case ActionType.LOGIN:
 			console.log(this);
 			break;
-			
+
 		default:
 
 	}

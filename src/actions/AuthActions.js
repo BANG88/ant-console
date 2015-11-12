@@ -1,5 +1,5 @@
 import ActionType from '../constants/AuthConstants'
-import {Dispatcher} from '../utils'
+import Dispatcher from '../dispatcher'
 
 
 let AuthAction = {
