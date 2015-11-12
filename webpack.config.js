@@ -14,7 +14,8 @@ const resolve = {
 			'actions': __dirname + '/src/actions/',
 			'components': __dirname + '/src/components/',
 			'constants': __dirname + '/src/constants/',
-			'reducers': __dirname + '/src/reducers/',
+			'utils': __dirname + '/src/utils/',
+			'stores': __dirname + '/src/stores/',
 			'themes': __dirname + '/src/public/themes',
 			'images': __dirname + '/src/public/images'
 		}
@@ -127,7 +128,7 @@ const development = {
 	},
 	...resolve,
 	module: {
-		// ...lintLoaders,
+		 ...lintLoaders,
 		loaders: [{
 				...jsLoaders,
 				query: {

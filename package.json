@@ -14,7 +14,6 @@
   "dependencies": {
     "antd": "^0.10.0-beta22",
     "babel": "5.8.23",
-    "fbemitter": "^2.0.0",
     "fbjs": "^0.4.0",
     "flux": "^2.1.1",
     "history": "^1.12.5",
