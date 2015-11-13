@@ -31,18 +31,22 @@ export default class Container extends React.Component {
     render() {
         const {children,sidebar} = this.props;
 
-        return (<Row>
-            <Col span="5">
-                <SideBar type={sidebar}></SideBar>
-            </Col>
-            <Col span="19">
-                <MainBody>
-                    {
-                        children
-                    }
-                </MainBody>
-            </Col>
-        </Row>)
+        return (
+
+            <div className="container-router-wrap">
+                <Row>
+                    <Col span="5">
+                        <SideBar type={sidebar}></SideBar>
+                    </Col>
+                    <Col span="19">
+                        <MainBody>
+                            {
+                                children
+                            }
+                        </MainBody>
+                    </Col>
+                </Row>
+            </div>)
 
     }
 

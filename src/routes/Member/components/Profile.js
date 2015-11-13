@@ -7,7 +7,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import { QueueAnim, Button } from 'antd';
-import  MainBody from 'components/MainBody';
+import  Container from 'components/Container';
 
 
 export default class Profile extends React.Component {
@@ -29,12 +29,12 @@ export default class Profile extends React.Component {
 
     render() {
 
-        return (<MainBody>
+        return (<Container>
             <Link to={'/user/updatePassword'}>修改密码</Link>
             {
                 this.props.children
             }
-        </MainBody>)
+        </Container>)
 
     }
 
