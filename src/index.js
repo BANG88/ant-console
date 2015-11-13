@@ -34,6 +34,7 @@ const rootRoute = {
                 require('./routes/Course'),
                 require('./routes/Grades'),
                 require('./routes/Messages'),
+                require('./routes/Member'),
                 require('./routes/Profile')
             ]
         },

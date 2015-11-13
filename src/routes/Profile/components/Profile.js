@@ -1,7 +1,7 @@
 import React from 'react'
- 
+
 import {message,Button} from 'antd'
- 
+
 
 class Profile extends React.Component {
 
@@ -12,11 +12,11 @@ class Profile extends React.Component {
     this.state = {
       count:0
     }
- 
+
   }
 
   componentDidMount(){
- 
+
 
 
   }
@@ -28,10 +28,10 @@ class Profile extends React.Component {
         <p>{this.state.count}</p>
         <Button onClick={()=>{
           // The only way to mutate the internal state is to dispatch an action.
-          // The actions can be serialized, logged or stored and later replayed.          
+          // The actions can be serialized, logged or stored and later replayed.
           message.success('+1')
         }}> 增加( + 1 )</Button>
-        <Button onClick={()=>{         
+        <Button onClick={()=>{
           message.error('-1')
         }}>减少( - 1 )</Button>
 
