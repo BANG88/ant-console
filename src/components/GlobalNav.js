@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router'
 import {Menu,Icon,Button} from 'antd';
-import cookie from 'js-cookie';
+import AuthService from 'utils/AuthService';
+
 
 const LinkProps = {};
 
@@ -14,45 +15,49 @@ class GlobalNav extends React.Component {
 
     render() {
         const { user ,history,location} = this.props;
-        console.log(this.props);
-        let isActive = history.isActive(location.pathname, location.query);
-        console.log(isActive, location);
+        const key = this.props.location.pathname;
+        const keys = key.replace('/', '') ? [key.replace('/', '')] : ['home'];
+
         let links = [
             {
                 path: '/products',
-                icon: 'home',
+                icon: '',
                 title: '商品管理'
             }, {
-                path: '/calendar',
-                icon: 'calendar',
+                path: '/orders',
+                icon: 'book',
                 title: '订单管理'
             }, {
-                path: '/grades',
-                icon: '',
+                path: '/Promote',
+                icon: 'promote',
                 title: '促销活动'
             }, {
                 path: '/user',
                 icon: 'messages',
                 title: '会员管理'
             }, {
-                path: '/profile',
-                icon: 'profile',
+                path: '/system',
+                icon: 'system',
                 title: '系统设置'
             }
         ];
-        return <div><Menu mode="horizontal">
-            {
-                links.map(function (link) {
-                    return <Menu.Item key={link.title}>
-                        <Link to={link.path} {...LinkProps}><Icon type={link.icon}/>{link.title}</Link>{' '}
-                    </Menu.Item>
-                })
-            }
-        </Menu>
-            <Button onClick={()=>{
-cookie.remove('TOKEN');
-		}}>退出登录</Button>
+        return <div>
+            <Button style={{float:'right'}} onClick={this.logout}>退出登录</Button>
+            <Menu mode="horizontal" selectedKeys={keys}>
+                {
+                    links.map(function (link) {
+                        return <Menu.Item key={link.path.replace('/','')}>
+                            <Link to={link.path} {...LinkProps}><Icon type={link.icon}/>{link.title}</Link>{' '}
+                        </Menu.Item>
+                    })
+                }
+            </Menu>
+
         </div>
+    }
+
+    logout() {
+        AuthService.logout();
     }
 }
 

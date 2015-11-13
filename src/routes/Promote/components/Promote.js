@@ -23,10 +23,7 @@ export default class Product extends React.Component {
 
         return (
             <Container>
-
-                主要内容区域
-
-
+                主要内容区域 促销
             </Container>
         )
 

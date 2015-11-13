@@ -31,6 +31,8 @@ class AuthService {
 
     logout() {
 
+        AuthActions.logout();
+
     }
 
 }

@@ -67,9 +67,8 @@ class AuthStore extends BaseStore {
      * @returns {boolean}
      */
     isLoggedIn() {
-        return true;
-        //return !!Cookie.get(TOKEN);
-
+        //return true;
+        return !!Cookie.get(TOKEN);
     }
 
 }

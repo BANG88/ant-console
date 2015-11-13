@@ -2,6 +2,7 @@ import React from 'react';
 import  Container from 'components/Container';
 
 
+
 export default class Product extends React.Component {
 
     constructor(props) {
@@ -23,10 +24,7 @@ export default class Product extends React.Component {
 
         return (
             <Container>
-
-                主要内容区域
-
-
+                Orders 分类
             </Container>
         )
 

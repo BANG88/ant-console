@@ -27,11 +27,8 @@ let Login = React.createClass({
     getInitialState() {
         return {
             status: {
-                email: {},
                 account: {},
-                password: {},
-                rePasswd: {},
-                textarea: {}
+                password: {}
             },
             formData: {
 
@@ -39,8 +36,6 @@ let Login = React.createClass({
                 password: undefined
 
             },
-            isEmailOver: false, // email 是否输入完毕
-            emailValidateMethod: 'onBlur', // 用于改变 email 的验证方法
             loading: false
         };
     },
@@ -66,9 +61,7 @@ let Login = React.createClass({
 
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({
-            isEmailOver: true
-        });
+
         const validation = this.refs.validation;
         validation.validate((valid) => {
             if (!valid) {
@@ -97,26 +90,7 @@ let Login = React.createClass({
         });
     },
 
-    userExists(rule, value, callback) {
-        if (!value) {
-            callback();
-        } else {
-            setTimeout(function () {
-                if (value === 'bang') {
-                    callback([new Error('抱歉，该用户名已被占用。')]);
-                } else {
-                    callback();
-                }
-            }, 800);
-        }
-    },
 
-    checkPass(rule, value, callback) {
-        if (!value) {
-            callback();
-        }
-        callback();
-    },
     componentDidMount() {
         AuthStore.addChangeListener(this._onChange);
     },
@@ -145,11 +119,11 @@ let Login = React.createClass({
                         wrapperCol={{span: 12}}
                         validateStatus={this.renderValidateStyle('account')}
                         hasFeedback
-                        help={status.account.isValidating ? '正在校验中..' : status.account.errors ? status.account.errors.join(',') : null}
+                        help={ status.account.errors ? status.account.errors.join(',') : null}
                         required>
                         <Validator
-                            rules={[{required: true, min: 5, message: '用户名至少为 5 个字符'}, {validator: this.userExists}]}>
-                            <Input name="account" id="account" value={formData.account} placeholder="实时校验，输入 admin 看看"
+                            rules={[{required: true, min: 5, message: '用户名至少为 5 个字符'}]}>
+                            <Input name="account" id="account" value={formData.account} placeholder="输入 admin 看看"
                                    onChange={this.setField.bind(this, 'account')}/>
                         </Validator>
                     </FormItem>
@@ -164,7 +138,7 @@ let Login = React.createClass({
                         help={status.password.errors ? status.password.errors.join(',') : null}
                         required>
                         <Validator
-                            rules={[{required: true, whitespace: true, message: '请填写密码'}, {validator: this.checkPass}]}>
+                            rules={[{required: true,min:6, whitespace: true, message: '请填写密码'}]}>
                             <Input name="password" id="password" type="password" placeholder="密码: 123456"
                                    onContextMenu={noop} onPaste={noop} onCopy={noop} onCut={noop} autoComplete="off"
                                    value={formData.password}/>

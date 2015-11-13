@@ -30,12 +30,10 @@ const rootRoute = {
             component: require('./components/App'),
             childRoutes: [
                 require('./routes/Products'),
-                require('./routes/Calendar'),
-                require('./routes/Course'),
-                require('./routes/Grades'),
-                require('./routes/Messages'),
+                require('./routes/Orders'),
+                require('./routes/Promote'),
                 require('./routes/Member'),
-                require('./routes/Profile')
+                require('./routes/System')
             ]
         },
         // 登录

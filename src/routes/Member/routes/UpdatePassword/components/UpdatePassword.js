@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import  MainBody from 'components/MainBody';
 
 
 export default class UpdatePassword extends React.Component {
@@ -26,7 +27,7 @@ export default class UpdatePassword extends React.Component {
 
     render() {
 
-        return (<div>UpdatePassword</div>)
+        return (<MainBody>UpdatePassword</MainBody>)
 
     }
 
