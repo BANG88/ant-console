@@ -17,7 +17,7 @@ import AppDispatcher from '../dispatcher';
  * 事件名称
  * @type {string}
  */
-const CHANGE = 'CHANGE';
+const CHANGE = 'CHANGE_EVENT';
 
 /**
  * 基础 Store
@@ -32,7 +32,7 @@ export default class BaseStore extends EventEmitter {
      * 注册action
      * @param actionSubscribe
      */
-    register(actionSubscribe) {
+    subscribe(actionSubscribe) {
         this._dispatchToken = AppDispatcher.register(actionSubscribe());
     }
 
@@ -48,6 +48,7 @@ export default class BaseStore extends EventEmitter {
      * 触发事件
      */
     emitChange() {
+        console.log(` 执行事件=> ${CHANGE}`);
         this.emit(CHANGE);
     }
 
@@ -56,6 +57,7 @@ export default class BaseStore extends EventEmitter {
      * @param cb
      */
     addChangeListener(cb) {
+        console.log(` 注册事件=> ${cb}`);
         this.on(CHANGE, cb)
     }
 
@@ -64,6 +66,7 @@ export default class BaseStore extends EventEmitter {
      * @param cb
      */
     removeChangeListener(cb) {
+        console.log(` 移除事件=> ${cb}`);
         this.removeListener(CHANGE, cb);
     }
 }

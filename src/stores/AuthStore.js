@@ -17,7 +17,7 @@ class AuthStore extends BaseStore {
     constructor() {
         super();
 
-        this.register(()=>  this._registerToActions.bind(this));
+        this.subscribe(()=>  this._registerToActions.bind(this));
 
         this._user = null;
 
@@ -70,6 +70,7 @@ class AuthStore extends BaseStore {
         //return true;
         return !!Cookie.get(TOKEN);
     }
+
 
 }
 

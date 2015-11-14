@@ -15,7 +15,9 @@ export default class Container extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+
+        };
 
     }
 
@@ -31,6 +33,7 @@ export default class Container extends React.Component {
     render() {
         const {children,sidebar} = this.props;
 
+        console.log(sidebar)
         return (
 
             <div className="container-router-wrap">

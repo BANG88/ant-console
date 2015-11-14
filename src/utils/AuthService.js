@@ -23,7 +23,7 @@ class AuthService {
             AuthActions.login({
                 //fixme: 假的数据
                 user: JSON.parse(user),
-                token: '模拟 token 真实环境需换掉'
+                token: '模拟 to ken 真实环境需换掉'
             });
         });
     }
