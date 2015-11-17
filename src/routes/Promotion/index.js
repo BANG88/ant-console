@@ -3,10 +3,10 @@
  */
 
 module.exports = {
-    path: 'system',
+    path: 'promotion',
     getComponent(location, cb) {
         require.ensure([], (require) => {
-            cb(null, require('./components/System'))
+            cb(null, require('./components/Promotion'))
         })
     },
 
@@ -17,4 +17,4 @@ module.exports = {
             ])
         })
     }
-}
+};

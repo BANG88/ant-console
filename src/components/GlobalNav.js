@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 import {Menu,Icon,Button} from 'antd';
-import AuthService from 'utils/AuthService';
 
 
 const LinkProps = {};
@@ -57,7 +56,7 @@ class GlobalNav extends React.Component {
     }
 
     logout() {
-        AuthService.logout();
+
     }
 }
 

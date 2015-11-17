@@ -1,80 +1,37 @@
 import ActionType from '../constants/AuthConstants';
-import BaseStore from './BaseStore';
-import {Cookie} from '../utils';
+import Dispatcher from '../dispatcher';
+import {createStore} from './BaseStore';
+import Cookie from 'js-cookie';
 
+const auth = {};
 const TOKEN = 'TOKEN';
 
+const AuthStore = createStore({
 
-/**
- * 继承自 BaseStore
- */
-class AuthStore extends BaseStore {
+    getAll(){
+        return auth;
+    },
 
-    /**
-     * 构造函数,注册 action 到 dispatcher
-     * 初始化一些基础数据
-     */
-    constructor() {
-        super();
+    get(id) {
+        return auth[id];
+    },
+    isLoggedIn(){
+        return !!Cookie.get(TOKEN)
+    }
+});
 
-        this.register(()=>  this._registerToActions.bind(this));
+AuthStore.dispatchToken = Dispatcher.register(action => {
 
-        this._user = null;
-
+    switch (action.actionType) {
+        case ActionType.REQUEST_AUTH:
+            //TODO 设置值,出发事件
+            AuthStore.emitChange();
+            break;
+        default:
+            break;
     }
 
+});
 
-    /**
-     * 注册 action 到 dispatcher
-     * @param action
-     * @private
-     */
-    _registerToActions(action) {
-        switch (action.actionType) {
+export default  AuthStore;
 
-            //登录
-            case ActionType.LOGIN:
-                this._user = action.user;
-                Cookie.set(TOKEN, action.user.token);
-                this.emitChange();
-                break;
-
-            //退出登录
-            case ActionType.LOGOUT:
-                this._user = null;
-                Cookie.remove(TOKEN);
-                this.emitChange();
-                break;
-            default:
-                break;
-
-        }
-    }
-
-
-    /**
-     * 获取当前用户信息
-     * @returns {null|*}
-     * @constructor
-     */
-    get User() {
-        return this._user;
-    }
-
-
-    /**
-     * 是否登录
-     * @returns {boolean}
-     */
-    isLoggedIn() {
-        //return true;
-        return !!Cookie.get(TOKEN);
-    }
-
-}
-
-
-/**
- * 导出 Store
- */
-export default new AuthStore();

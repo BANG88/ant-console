@@ -1,69 +1,40 @@
-/**
- * SunEee
- * @date Created on 11/12/15
- * @author YuHui(语晖)<yuhui@suneee.com>
- */
+import assign from 'object-assign';
+import {EventEmitter} from 'events';
+
+const CHANGE_EVENT = 'change';
+
 
 /**
- * 事件系统,提供基础事件支持
+ * create store
+ * @param spec
  */
-import { EventEmitter } from 'events';
-/**
- * dispatcher
- */
-import AppDispatcher from '../dispatcher';
+export function createStore(spec) {
 
-/**
- * 事件名称
- * @type {string}
- */
-const CHANGE = 'CHANGE';
+    const emitter = new EventEmitter();
 
-/**
- * 基础 Store
- */
-export default class BaseStore extends EventEmitter {
+    emitter.setMaxListeners(0);
 
-    constructor() {
-        super();
+    const store = assign({
+        emitChange() {
+            emitter.emit(CHANGE_EVENT);
+        },
+
+        addChangeListener(callback) {
+            emitter.on(CHANGE_EVENT, callback);
+        },
+
+        removeChangeListener(callback) {
+            emitter.removeListener(CHANGE_EVENT, callback);
+        }
+    }, spec);
+
+
+    //auto bind
+    for (var key in store) {
+        if (store.hasOwnProperty(key) && typeof key === 'function') {
+            store[key] = store[key].bind(store);
+        }
     }
 
-    /**
-     * 注册action
-     * @param actionSubscribe
-     */
-    register(actionSubscribe) {
-        this._dispatchToken = AppDispatcher.register(actionSubscribe());
-    }
-
-    /**
-     * 获取 dispatch Token
-     * @returns {*}
-     */
-    get dispatchToken() {
-        return this._dispatchToken;
-    }
-
-    /**
-     * 触发事件
-     */
-    emitChange() {
-        this.emit(CHANGE);
-    }
-
-    /**
-     * 注册事件
-     * @param cb
-     */
-    addChangeListener(cb) {
-        this.on(CHANGE, cb)
-    }
-
-    /**
-     * 移除事件
-     * @param cb
-     */
-    removeChangeListener(cb) {
-        this.removeListener(CHANGE, cb);
-    }
+    return store;
 }

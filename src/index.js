@@ -29,23 +29,17 @@ const rootRoute = {
             },
             component: require('./components/App'),
             childRoutes: [
-                require('./routes/Products'),
-                require('./routes/Orders'),
-                require('./routes/Promote'),
+                require('./routes/Product'),
+                require('./routes/Order'),
+                require('./routes/Promotion'),
                 require('./routes/Member'),
                 require('./routes/System')
             ]
         },
         // 登录
-        {
-            path: '/login',
-            component: require('./routes/Member/components/Login')
-        },
+        require('./routes/Login'),
         // 404
-        {
-            path: '*',
-            component: require('./components/NotFound')
-        }
+        require('./routes/Notfound')
     ]
 
 };
