@@ -3,7 +3,7 @@
  */
 
 module.exports = {
-    path: 'order',
+    path: 'orders',
     getComponent(location, cb) {
         require.ensure([], (require) => {
             cb(null, require('./components/Order'))

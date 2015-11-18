@@ -9,5 +9,11 @@ import keyMirror from 'fbjs/lib/keyMirror';
 export default  keyMirror({
     REQUEST_LOGIN: null,
     REQUEST_LOGIN_SUCCESS: null,
-    REQUEST_LOGIN_ERROR: null
+    REQUEST_LOGIN_ERROR: null,
+
+
+    REQUEST_LOGOUT: null,
+    REQUEST_LOGOUT_SUCCESS: null,
+    REQUEST_LOGOUT_ERROR: null,
+
 })

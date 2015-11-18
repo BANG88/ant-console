@@ -89,7 +89,11 @@ const plugins = {
         }),
         new webpack.DefinePlugin({
             __DEVELOPMENT__: false,
-            __DEVTOOLS__: false
+            __DEVTOOLS__: false,
+            'process.env': {
+                // This has effect on the react lib size
+                'NODE_ENV': JSON.stringify('production')
+            }
         }),
         new ExtractTextPlugin('[name]-[contenthash].css', {
             disable: false,
@@ -104,7 +108,8 @@ const plugins = {
                 removeComments: true,
                 collapseWhitespace: true,
                 conservativeCollapse: true,
-                preserveLineBreaks: true
+                preserveLineBreaks: true,
+                removeEmptyElements: true
             }
         })
     ]

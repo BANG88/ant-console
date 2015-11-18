@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { createHistory, useBasename } from 'history';
 import { Router ,Route} from 'react-router';
 
-import AuthStore from './stores/AuthStore';
+import LoginStore from './stores/LoginStore';
 
 const history = useBasename(createHistory)({
     // basename: '/console'
@@ -23,7 +23,7 @@ const rootRoute = {
              * @return {[type]}              [description]
              */
             onEnter: (nextState, replaceState)=> {
-                if (!AuthStore.isLoggedIn()) {
+                if (!LoginStore.isLoggedIn()) {
                     replaceState({nextPathname: nextState.location.pathname}, '/login')
                 }
             },

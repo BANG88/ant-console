@@ -7,7 +7,7 @@
 import keyMirror from 'fbjs/lib/keyMirror';
 
 export default  keyMirror({
-    REQUEST_AUTH: null,
-    REQUEST_AUTH_SUCCESS: null,
-    REQUEST_AUTH_ERROR: null
+    REQUEST_DASHBOARD: null,
+    REQUEST_DASHBOARD_SUCCESS: null,
+    REQUEST_DASHBOARD_ERROR: null
 })
