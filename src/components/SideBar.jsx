@@ -9,6 +9,27 @@ import {Link} from 'react-router';
 import { QueueAnim,Menu, Icon } from 'antd';
 const SubMenu = Menu.SubMenu;
 
+/*
+商品管理
+    商品管理
+    价格管理
+    商品设置
+    库存管理
+订单管理
+    订单管理
+    退换货管理
+系统设置
+    权限管理
+    渠道管理
+    系统管理
+*/
+
+const menus = {
+    products:[{
+        
+    }]
+};
+
 var Sider = React.createClass({
     getInitialState() {
         return {
@@ -22,8 +43,7 @@ var Sider = React.createClass({
         });
     },
     render() {
-        return <Menu onClick={this.handleClick}
-                     style={{width:240}}
+        return <Menu onClick={this.handleClick}                   
                      defaultOpenKeys={['sub1']}
                      selectedKeys={[this.state.current]}
                      mode="inline">

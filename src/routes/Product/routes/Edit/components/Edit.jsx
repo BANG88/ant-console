@@ -1,7 +1,7 @@
 import React from 'react';
-import OrderActions from 'actions/OrderActions';
-import OrderStore from 'stores/OrderStore';
-import  Container from 'components/Container';
+import Product/editActions from 'actions/Product/editActions';
+import Product/editStore from 'stores/Product/editStore';
+
 export default React.createClass({
 
   getInitialState() {
@@ -16,7 +16,7 @@ export default React.createClass({
   },
   render() {
     return (
-      <Container>Hello, Order!</Container>
+      <p>Hello, product/edit!</p>
     );
   }
 

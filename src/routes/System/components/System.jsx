@@ -1,7 +1,7 @@
 import React from 'react';
 import SystemActions from 'actions/SystemActions';
 import SystemStore from 'stores/SystemStore';
-
+import  Container from 'components/Container';
 export default React.createClass({
 
   getInitialState() {
@@ -16,7 +16,7 @@ export default React.createClass({
   },
   render() {
     return (
-      <p>Hello, system!</p>
+      <Container>Hello, system!</Container>
     );
   }
 

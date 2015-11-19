@@ -126,7 +126,7 @@ const development = {
     devtool: "#inline-source-map",
     entry: [
         'webpack-hot-middleware/client',
-        './src/index.js'
+        './src/index.jsx'
     ],
     stats: {
         colors: true,
@@ -171,7 +171,7 @@ const production = {
     },
     devtool: 'sourcemap',
     entry: [
-        './src/index.js'
+        './src/index.jsx'
     ],
     ...resolve,
     module: {

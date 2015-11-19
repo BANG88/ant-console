@@ -5,7 +5,7 @@ import selectn from 'selectn';
 
 import Cookie from 'js-cookie';
 
-const TOKEN = 'TOKEN';
+const TOKEN = 'sessionId';
 const login = {};
 
 const LoginStore = createStore({
@@ -27,8 +27,8 @@ LoginStore.dispatchToken = Dispatcher.register(action => {
 
     switch (action.actionType) {
         case ActionType.REQUEST_LOGIN_SUCCESS:
-            //TODO 设置值, 触发事件
-            Cookie.set(TOKEN, 'fake token 9527', {expires: 7, path: '/'});
+            //TODO 设置值, 触发事件            
+            Cookie.set(TOKEN, 'b3ba6a0a40834bbdbe09911128a03c17', {expires: 7, path: '/'});           
             LoginStore.emitChange();
             break;
         case ActionType.REQUEST_LOGOUT:

@@ -14,9 +14,10 @@ export default class MainBody extends React.Component {
     render() {
         return (
 
-            <QueueAnim type={['right', 'left']} delay={200}>
-                <div key="MainBody">
+            <QueueAnim type={['right', 'left']} delay={120} className="anim-wrap">
+                <div key="MainBody" className='padding'>              
                     {
+                    
                         this.props.children
                     }
                 </div>

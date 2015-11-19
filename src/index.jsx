@@ -27,7 +27,7 @@ const rootRoute = {
                     replaceState({nextPathname: nextState.location.pathname}, '/login')
                 }
             },
-            component: require('./components/App'),
+            component: require('./routes/Dashboard/components/App'),
             childRoutes: [
                 require('./routes/Product'),
                 require('./routes/Order'),
