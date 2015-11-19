@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 import { createHistory, useBasename } from 'history';
 import { Router ,Route} from 'react-router';
 
-import AuthStore from './stores/AuthStore';
+import LoginStore from './stores/LoginStore';
 
 const history = useBasename(createHistory)({
     // basename: '/console'
@@ -23,29 +23,23 @@ const rootRoute = {
              * @return {[type]}              [description]
              */
             onEnter: (nextState, replaceState)=> {
-                if (!AuthStore.isLoggedIn()) {
+                if (!LoginStore.isLoggedIn()) {
                     replaceState({nextPathname: nextState.location.pathname}, '/login')
                 }
             },
             component: require('./components/App'),
             childRoutes: [
-                require('./routes/Products'),
-                require('./routes/Orders'),
-                require('./routes/Promote'),
+                require('./routes/Product'),
+                require('./routes/Order'),
+                require('./routes/Promotion'),
                 require('./routes/Member'),
                 require('./routes/System')
             ]
         },
         // 登录
-        {
-            path: '/login',
-            component: require('./routes/Member/components/Login')
-        },
+        require('./routes/Login'),
         // 404
-        {
-            path: '*',
-            component: require('./components/NotFound')
-        }
+        require('./routes/Notfound')
     ]
 
 };

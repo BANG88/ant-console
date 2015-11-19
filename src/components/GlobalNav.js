@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router'
 import {Menu,Icon,Button} from 'antd';
-import AuthService from 'utils/AuthService';
 
+import LoginStore from 'stores/LoginStore';
+import LoginActions from 'actions/LoginActions';
 
 const LinkProps = {};
 
@@ -28,7 +29,7 @@ class GlobalNav extends React.Component {
                 icon: 'book',
                 title: '订单管理'
             }, {
-                path: '/Promote',
+                path: '/promotion',
                 icon: 'promote',
                 title: '促销活动'
             }, {
@@ -57,7 +58,7 @@ class GlobalNav extends React.Component {
     }
 
     logout() {
-        AuthService.logout();
+        LoginActions.logout();
     }
 }
 

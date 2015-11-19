@@ -1,7 +1,7 @@
 import React from 'react';
 import {Validation, Button, Form, Input,message,Spin} from 'antd';
-import AuthService from 'utils/AuthService';
-import AuthStore from 'stores/AuthStore';
+import LoginStore from 'stores/LoginStore';
+import LoginActions from 'actions/LoginActions';
 
 
 const Validator = Validation.Validator;
@@ -21,6 +21,12 @@ function noop() {
     return false;
 }
 
+function getState() {
+    return {
+        isLoggedIn: LoginStore.isLoggedIn()
+    }
+}
+
 let Login = React.createClass({
     mixins: [Validation.FieldMixin],
 
@@ -32,11 +38,12 @@ let Login = React.createClass({
             },
             formData: {
 
-                account: undefined,
-                password: undefined
+                account: 'admin',
+                password: null
 
             },
-            loading: false
+            loading: false,
+            isLoggedIn: LoginStore.isLoggedIn()
         };
     },
 
@@ -73,15 +80,7 @@ let Login = React.createClass({
                     loading: true
                 });
 
-                console.log(this);
-
-
-                AuthService.login(this.state.formData)['catch']((error)=> {
-                    this.setState({
-                        loading: false
-                    });
-                    console.log(error)
-                });
+                LoginActions.login(this.state.formData);
 
 
             }
@@ -92,18 +91,26 @@ let Login = React.createClass({
 
 
     componentDidMount() {
-        AuthStore.addChangeListener(this._onChange);
+        LoginStore.addChangeListener(this._onChange);
+        this._checkAuth();
+
     },
 
     _onChange() {
-        if (AuthStore.isLoggedIn()) {
-            this.props.history.replaceState(null, '/');
-        }
-        console.log(AuthStore)
+        this.setState(getState());
+        this.setState({
+            loading: false
+        });
+        this._checkAuth();
     },
 
     componentWillUnmount() {
-        AuthStore.removeChangeListener(this._onChange);
+        LoginStore.removeChangeListener(this._onChange);
+    },
+    _checkAuth(){
+        if (this.state.isLoggedIn) {
+            this.props.history.replaceState(null, '/');
+        }
     },
     render() {
         const formData = this.state.formData;
