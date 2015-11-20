@@ -4,6 +4,7 @@ import ProductStore from 'stores/ProductStore';
 import  Container from 'components/Container'; 
 import {Link} from 'react-router';
 import { Table, Icon } from 'antd';
+import DataTable from 'components/DataTable';
 
 
 function getState(props){
@@ -119,7 +120,10 @@ export default React.createClass({
 
   getInitialState() {
      return {
-      dataSource: null
+      dataSource: null,
+      params:{
+       channelId: '0'
+      }
     };
   },
 
@@ -139,7 +143,7 @@ export default React.createClass({
     },
     
   render() {
-    return (　 this.props.children ||　 <Container><Table rowSelection={rowSelection}  bordered={true} columns={columns}  dataSource={this.state.dataSource} pagination={this.state.pagination}/></Container>
+    return (　 this.props.children ||　 <Container><DataTable params={this.state.params} url="/iteminfo.queryItemList" rowSelection={rowSelection}  bordered={true} columns={columns} /></Container>
       )
     
   }

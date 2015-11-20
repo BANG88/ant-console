@@ -23,7 +23,7 @@ const resolve = {
         }
     },
     resolveLoader: {
-        root: path.join(__dirname, '../node_modules')
+        root: path.join(__dirname, './node_modules')
     },
 };
 
@@ -37,15 +37,11 @@ const lintLoaders = {
 
 const jsLoaders = {
     test: /\.jsx?$/,
-    exclude: /node_modules/,
+    include: path.join(__dirname, 'src'),
     loader: 'babel'
 };
 
-const loaders = [{
-        test: /\.scss/,
-        exclude: [/node_module/],
-        loader: 'style!css?module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
-    }, {
+const loaders = [ {
         test: /\.css/,
         exclude: [/node_module/],
         loader: "style-loader!css-loader"
@@ -134,24 +130,10 @@ const development = {
     },
     ...resolve,
     module: {
+        //noParse:[/antd/],
         ...lintLoaders,
         loaders: [{
-            ...jsLoaders,
-            query: {
-                plugins: ['react-transform'],
-                extra: {
-                    'react-transform': {
-                        transforms: [{
-                            transform: 'react-transform-hmr',
-                            imports: ['react'],
-                            locals: ['module']
-                        }, {
-                            transform: 'react-transform-catch-errors',
-                            imports: ['react', 'redbox-react']
-                        }]
-                    }
-                }
-            }
+            ...jsLoaders,            
         },
             ...loaders
         ]

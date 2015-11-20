@@ -28,13 +28,12 @@ LoginStore.dispatchToken = Dispatcher.register(action => {
     switch (action.actionType) {
         case ActionType.REQUEST_LOGIN_SUCCESS:
             //TODO 设置值, 触发事件            
-            Cookie.set(TOKEN, 'b3ba6a0a40834bbdbe09911128a03c17', {expires: 7, path: '/'});           
+            Cookie.set(TOKEN, '040f53beda0a4f7097e631b6d80ce95e');           
             LoginStore.emitChange();
             break;
         case ActionType.REQUEST_LOGOUT:
             //TODO 设置值, 触发事件
-            Cookie.remove(TOKEN, {path: '/'});
-
+            Cookie.remove(TOKEN);
             LoginStore.emitChange();
             break;
         default:

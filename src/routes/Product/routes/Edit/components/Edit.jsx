@@ -1,6 +1,6 @@
 import React from 'react';
-import Product/editActions from 'actions/Product/editActions';
-import Product/editStore from 'stores/Product/editStore';
+import ProductActions from 'actions/ProductActions';
+import ProductStore from 'stores/ProductStore';
 
 export default React.createClass({
 

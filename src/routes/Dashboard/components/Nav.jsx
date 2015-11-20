@@ -11,17 +11,39 @@ import './Nav.less';
 
 const LinkProps = {};
 
-
-class GlobalNav extends React.Component {
-
-    constructor(props, context) {
-        super(props, context)
+function getState() {
+    return {
+        isLoggedIn: LoginStore.isLoggedIn()
     }
+}
+
+let GlobalNav = React.createClass({
+
+    getInitialState() {
+        return getState();
+    },
+
+ 
+    componentDidMount() {
+        LoginStore.addChangeListener(this._onChange);      
+    },
+
+    _onChange() {
+        this.setState(getState());       
+        this._checkAuth();
+    },
+
+    componentWillUnmount() {
+        LoginStore.removeChangeListener(this._onChange);
+    },
+    _checkAuth(){
+       this.props.history.replaceState(null, '/login');
+    },
 
     render() {
         const { user ,history,location} = this.props;
         const key = this.props.location.pathname;
-        const keys = key.replace('/', '') ? [key.replace('/', '')] : ['home'];
+        const keys = key.replace('/', '') ? [key.replace('/', '')] : ['/'];
 
         const links = [
             {
@@ -39,15 +61,15 @@ class GlobalNav extends React.Component {
             }
         ];
         
-        const accountMenu = <Menu>
+        const accountMenu = <Menu onClick={this._handleMenuClick}>
   <Menu.Item>
     <Link to='/user'> <Icon type="user" />  账号管理</Link>
   </Menu.Item>
   <Menu.Item>
     <Link to='/user/updatePassword'> <Icon type="lock" /> 修改密码</Link>
   </Menu.Item>
-  <Menu.Item>
-    <Link to='/logout'> <Icon type="logout" /> 退出系统</Link>
+  <Menu.Item key='logout'>
+    <Icon type="logout" /> 退出系统
   </Menu.Item>
 </Menu>;
         
@@ -78,11 +100,17 @@ class GlobalNav extends React.Component {
         </div>
       </div>     
     </div> )
-    }
+    },
 
     logout() {
         LoginActions.logout();
+    },
+    
+    _handleMenuClick(item){
+      if(item.key === 'logout'){
+        this.logout();
+      }
     }
-}
+})
 
 export default GlobalNav

@@ -13,7 +13,7 @@
   },
   "src": "src",
   "dependencies": {
-    "antd": "^0.10.0-beta28",
+    "antd": "^0.10.0",
     "babel": "5.8.23",
     "fbjs": "^0.4.0",
     "flux": "^2.1.1",
