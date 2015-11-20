@@ -16,7 +16,15 @@ export default function request(form) {
 
     //development
     if (__DEVELOPMENT__) {
+
         options.url = '/api' + options.url;
+        options.data = JSON.stringify(options.data, null, 2)
+    } else {
+
+
+        options.url = '/api' + options.url;
+        options.data = JSON.stringify(options.data, null, 2)
+
     }
 
     return reqwest(options)

@@ -9,11 +9,16 @@
     "start": "node scripts/serve.js",
     "clean": "node scripts/clean.js",
     "asset": "node scripts/asset.js",
-    "build": "npm run clean; npm run asset;NODE_ENV=production node scripts/build.js"
+    "build": "npm run clean;npm run asset;NODE_ENV=production node scripts/build.js",
+    "build_win": "set NODE_ENV=production && npm run clean && npm run asset && node scripts/build.js"
   },
   "src": "src",
   "dependencies": {
+<<<<<<< HEAD
     "antd": "^0.10.0-beta23",
+=======
+    "antd": "^0.10.0",
+>>>>>>> origin/master
     "babel": "5.8.23",
     "fbjs": "^0.4.0",
     "flux": "^2.1.1",
@@ -21,10 +26,12 @@
     "js-cookie": "^2.0.4",
     "less": "^2.5.3",
     "less-loader": "^2.2.1",
+    "object-assign": "^4.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-router": "^1.0.0",
-    "reqwest": "^2.0.5"
+    "reqwest": "^2.0.5",
+    "selectn": "^0.10.0"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",

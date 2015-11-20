@@ -5,12 +5,18 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import path from 'path';
 var StatsPlugin = require('stats-webpack-plugin');
 
+const DEV = !!process.env.NODE_ENV;
+
 
 const assetPath = path.join(__dirname, 'dist');
 
 const resolve = {
     resolve: {
+<<<<<<< HEAD
         extensions: ['', '.js', '.jsx'],
+=======
+        extensions: ['', '.js', '.jsx', '.less'],
+>>>>>>> origin/master
         alias: {
             'actions': __dirname + '/src/actions/',
             'components': __dirname + '/src/components/',
@@ -22,7 +28,11 @@ const resolve = {
         }
     },
     resolveLoader: {
+<<<<<<< HEAD
         root: path.join(__dirname, '../node_modules')
+=======
+        root: path.join(__dirname, './node_modules')
+>>>>>>> origin/master
     },
 };
 
@@ -31,6 +41,7 @@ const lintLoaders = {
         test: /\.js$/,
         exclude: [/node_module/, 'mock/*'],
         loader: 'eslint'
+<<<<<<< HEAD
     }],
 };
 
@@ -63,6 +74,34 @@ const loaders = [{
 const plugins = {
     development: [
         new webpack.optimize.DedupePlugin(),
+=======
+    }]
+};
+
+const jsLoaders = {
+    test: /\.jsx?$/,
+    include: path.join(__dirname, 'src'),
+    loader: 'babel'
+};
+
+const loaders = [ {
+        test: /\.css/,
+        exclude: [/node_module/],
+        loader: "style-loader!css-loader"
+    }, {
+        test: /\.less$/,
+        loader: "style!css!less"
+    },
+        {
+            test: /\.(png|jpg|woff|woff2)$/,
+            loader: 'url?limit=8192'
+        }
+    ]
+    ;
+
+const plugins = {
+    development: [
+>>>>>>> origin/master
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.CommonsChunkPlugin('common', 'common.js'),
         new webpack.HotModuleReplacementPlugin(),
@@ -77,15 +116,21 @@ const plugins = {
         new HtmlWebpackPlugin({
             template: 'src/index.html.tpl',
             inject: 'body'
+<<<<<<< HEAD
         }),
         new StatsPlugin('stats.json', {
             chunkModules: true,
             //exclude: [/node_modules[\\\/]react/]
+=======
+>>>>>>> origin/master
         })
     ],
 
     production: [
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
         new webpack.optimize.DedupePlugin(),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin({
@@ -114,7 +159,12 @@ const plugins = {
                 removeComments: true,
                 collapseWhitespace: true,
                 conservativeCollapse: true,
+<<<<<<< HEAD
                 preserveLineBreaks: true
+=======
+                preserveLineBreaks: true,
+                removeEmptyElements: true
+>>>>>>> origin/master
             }
         })
     ]
@@ -131,8 +181,12 @@ const development = {
     devtool: "#inline-source-map",
     entry: [
         'webpack-hot-middleware/client',
+<<<<<<< HEAD
         './src/index.js',
         './src/utils/index.js'
+=======
+        './src/index.jsx'
+>>>>>>> origin/master
     ],
     stats: {
         colors: true,
@@ -140,6 +194,7 @@ const development = {
     },
     ...resolve,
     module: {
+<<<<<<< HEAD
         ...lintLoaders,
         loaders: [{
             ...jsLoaders,
@@ -158,6 +213,12 @@ const development = {
                     }
                 }
             }
+=======
+        //noParse:[/antd/],
+        ...lintLoaders,
+        loaders: [{
+            ...jsLoaders,            
+>>>>>>> origin/master
         },
             ...loaders
         ]
@@ -177,15 +238,33 @@ const production = {
     },
     devtool: 'sourcemap',
     entry: [
+<<<<<<< HEAD
         './src/index.js'
+=======
+        './src/index.jsx'
+>>>>>>> origin/master
     ],
     ...resolve,
     module: {
         ...lintLoaders,
         loaders: [{
+<<<<<<< HEAD
             ...jsLoaders,
         },
             ...loaders
+=======
+            ...jsLoaders
+        },
+            ...loaders,
+            {
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract(
+                    'css?sourceMap!' +
+                    'autoprefixer-loader!' +
+                    'less?{"sourceMap":true,"modifyVars":' + JSON.stringify({}) + '}'
+                )
+            }
+>>>>>>> origin/master
         ]
     },
 

@@ -3,17 +3,18 @@
  */
 
 module.exports = {
-    path: 'system',
+    path: '/products',
     getComponent(location, cb) {
         require.ensure([], (require) => {
-            cb(null, require('./components/System'))
+            cb(null, require('./components/Product'))
         })
     },
 
     getChildRoutes(location, cb) {
         require.ensure([], (require) => {
             cb(null, [
-                //require('./routes/xx')
+                require('./routes/Edit'),
+                require('./routes/Detail')
             ])
         })
     }

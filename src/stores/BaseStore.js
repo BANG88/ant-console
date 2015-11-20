@@ -1,33 +1,26 @@
-/**
- * SunEee
- * @date Created on 11/12/15
- * @author YuHui(语晖)<yuhui@suneee.com>
- */
+import assign from 'object-assign';
+import {EventEmitter} from 'events';
 
-/**
- * 事件系统,提供基础事件支持
- */
-import { EventEmitter } from 'events';
-/**
- * dispatcher
- */
-import AppDispatcher from '../dispatcher';
+const CHANGE_EVENT = 'change';
 
+<<<<<<< HEAD
 /**
  * 事件名称
  * @type {string}
  */
 const CHANGE = 'CHANGE_EVENT';
+=======
+>>>>>>> origin/master
 
 /**
- * 基础 Store
+ * create store
+ * @param spec
  */
-export default class BaseStore extends EventEmitter {
+export function createStore(spec) {
 
-    constructor() {
-        super();
-    }
+    const emitter = new EventEmitter();
 
+<<<<<<< HEAD
     /**
      * 注册action
      * @param actionSubscribe
@@ -35,15 +28,16 @@ export default class BaseStore extends EventEmitter {
     subscribe(actionSubscribe) {
         this._dispatchToken = AppDispatcher.register(actionSubscribe());
     }
+=======
+    emitter.setMaxListeners(0);
+>>>>>>> origin/master
 
-    /**
-     * 获取 dispatch Token
-     * @returns {*}
-     */
-    get dispatchToken() {
-        return this._dispatchToken;
-    }
+    const store = assign({
+        emitChange() {
+            emitter.emit(CHANGE_EVENT);
+        },
 
+<<<<<<< HEAD
     /**
      * 触发事件
      */
@@ -68,5 +62,24 @@ export default class BaseStore extends EventEmitter {
     removeChangeListener(cb) {
         console.log(` 移除事件=> ${cb}`);
         this.removeListener(CHANGE, cb);
+=======
+        addChangeListener(callback) {
+            emitter.on(CHANGE_EVENT, callback);
+        },
+
+        removeChangeListener(callback) {
+            emitter.removeListener(CHANGE_EVENT, callback);
+        }
+    }, spec);
+
+
+    //auto bind
+    for (var key in store) {
+        if (store.hasOwnProperty(key) && typeof key === 'function') {
+            store[key] = store[key].bind(store);
+        }
+>>>>>>> origin/master
     }
+
+    return store;
 }

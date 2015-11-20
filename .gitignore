@@ -3,4 +3,8 @@ node_modules
 npm-debug.log
 dist
 .idea
+<<<<<<< HEAD
 stats.json
+=======
+.vscode
+>>>>>>> origin/master

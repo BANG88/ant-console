@@ -1,0 +1,97 @@
+@menu-prefix-cls: ant-menu;
+@theme:blue;
+@theme-base-color:tint(#1D80D3,20%);
+@primary-color:#fff;
+@menu-font-color:@primary-color; 
+ 
+
+// blue theme
+.@{menu-prefix-cls} {
+  &-@{theme},
+  &-@{theme} &-sub {
+    color: @menu-font-color;
+    background: @theme-base-color;
+  }
+
+  &-@{theme} &-inline&-sub {
+    background: #333;
+  }
+
+  &-@{theme}&-horizontal {
+    border-bottom:none;
+  }
+
+  &-@{theme}&-horizontal > &-item,
+  &-@{theme}&-horizontal > &-submenu {
+    border-bottom: 0;
+    top: 0;
+  }
+
+  &-@{theme}&-horizontal > &-item-active,
+  &-@{theme}&-horizontal > &-item-selected,
+  &-@{theme}&-horizontal > &-submenu:hover,
+  &-@{theme}&-horizontal > &-submenu &-submenu-title:hover {
+    color: #fff;
+  }
+
+  &-@{theme} &-item > a {
+    color: @menu-font-color;
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  &-@{theme}&-inline,
+  &-@{theme}&-vertical {
+    border-right: 0;
+  }
+
+  &-@{theme}&-inline &-item,
+  &-@{theme}&-vertical &-item {
+    border-right: 0;
+    margin-left: 0;
+    left: 0;
+  }
+
+  &-@{theme}&-inline &-item-selected {
+    border-right: 0;
+    background-color: @primary-color;
+    color: #fff;
+  }
+
+  &-@{theme} &-item-active,
+  &-@{theme} &-submenu-title:hover {
+    background-color: transparent;
+    color: @primary-color;
+  }
+}
+
+ 
+ .ant-layout-topaside {
+  height: 100%;
+  
+ .ant-layout-wrapper {
+  padding: 0 20px;
+}
+
+ .ant-layout-header {
+  background: @theme-base-color;
+  height: 64px;
+}
+
+ .ant-layout-logo {
+  width: 120px;
+  height: 32px;
+  background: tint(@theme-base-color,60%);
+  border-radius: 6px;
+  margin: 16px 28px 16px 0;
+  float: left;
+}
+
+.ant-layout-right-menu{
+    float: right;
+    margin: 16px 28px 16px 0;
+}
+
+ 
+}
